@@ -64,12 +64,9 @@ def computeDelta(wt, X, Xi):
       button = temp
       tops.append(top)
       buttons.append(button)
-    # print len(tops)
-    # print '=========='
-    # print Xi
     Es = sum(tops)/float(sum(buttons))
     return Es
-    pass
+
 
 def similarity(a,b):
   amean = np.mean(a)
@@ -126,7 +123,6 @@ testDeltaP90 = np.empty(0)
 testDeltaP180 = np.empty(0)
 testDeltaP360 = np.empty(0)
 for i in xrange(0,len(train1_90.index)) :
-  #print len(train1_90)
   testDeltaP90 = np.append(testDeltaP90, computeDelta(weight,train1_90.iloc[i],train1_90))
 for i in xrange(0,len(train1_180.index)) :
   testDeltaP180 = np.append(testDeltaP180, computeDelta(weight,train1_180.iloc[i],train1_180))
@@ -154,11 +150,12 @@ result = model.predict(testData)
 compare = { 'Actual': testDeltaP,
             'Predicted': result }
 compareDF = pd.DataFrame(compare)
-#print result
+
 
 # Compute the MSE and print the result
 # HINT: consider using the sm.mean_squared_error function
-MSE = sm.mean_squared_error(testDeltaP,result)
 # YOUR CODE HERE
+MSE = sm.mean_squared_error(testDeltaP,result)
+
 
 print "The MSE is %f" % (MSE)
