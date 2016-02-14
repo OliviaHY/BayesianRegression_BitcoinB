@@ -154,10 +154,11 @@ result = model.predict(testData)
 compare = { 'Actual': testDeltaP,
             'Predicted': result }
 compareDF = pd.DataFrame(compare)
-
+#print result
 
 # Compute the MSE and print the result
 # HINT: consider using the sm.mean_squared_error function
-MSE = 0.0
+MSE = sm.mean_squared_error(testDeltaP,result)
 # YOUR CODE HERE
+
 print "The MSE is %f" % (MSE)
