@@ -122,10 +122,22 @@ print model.params
 # Perform the Bayesian Regression to predict the average price change for each dataset of test using train1 as input.
 # This should be similar to above where it was computed for train2.
 # YOUR CODE HERE
+testDeltaP90 = np.empty(0)
+testDeltaP180 = np.empty(0)
+testDeltaP360 = np.empty(0)
+for i in xrange(0,len(train1_90.index)) :
+  #print len(train1_90)
+  testDeltaP90 = np.append(testDeltaP90, computeDelta(weight,train1_90.iloc[i],train1_90))
+for i in xrange(0,len(train1_180.index)) :
+  testDeltaP180 = np.append(testDeltaP180, computeDelta(weight,train1_180.iloc[i],train1_180))
+for i in xrange(0,len(train1_360.index)) :
+  testDeltaP360 = np.append(testDeltaP360, computeDelta(weight,train1_360.iloc[i],train1_360))
 
 
 # Actual deltaP values for test data.
 # YOUR CODE HERE (use the right variable names so the below code works)
+testDeltaP = np.asarray(train1_360[['Yi']])
+testDeltaP = np.reshape(testDeltaP, -1)
 
 
 
